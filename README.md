@@ -77,7 +77,7 @@ Login to the mongo shell and -
 Feel free to play around for brownie points!
 
 ## Commands
-`
+```
 1. kubectl apply -f secret.yaml
 2. kubectl apply -f configmap.yaml
 3. kubectl apply -f deployments.yaml
@@ -85,4 +85,4 @@ Feel free to play around for brownie points!
 5. kubectl get all
 6. docker build -t flask-app:latest .
 7. docker run -i -t -p 5001:5001 flask-app:latest
-`
+```
