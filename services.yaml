@@ -34,3 +34,17 @@ spec:
 # define a `Service` for flask-app
 # set the type to LoadBalancer and configure the ports
 # don't forget to specify a nodePort as well! a nodePort exposes the pod to applications outside the cluster. this will allow you to access the frontend admin interface from your host system
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-service
+spec:
+  selector:
+    app: flask-app
+  ports:
+  - protocol: "TCP"
+    port: 5001
+    targetPort: 5001
+    nodePort: 32000 
+  type: LoadBalancer
+  
