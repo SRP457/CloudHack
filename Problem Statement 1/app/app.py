@@ -5,17 +5,20 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-user = ''           # username as set for the mongodb admin server (the username used in secret.yaml - before base64 conversion)
-password = ''       # password as set for the mongodb admin server (the password used in secret.yaml - before base64 conversion)
-host = ''    # service name of the mongodb admin server as set in the service for mongodb server
-port = ''              # port number of the mongodb admin server as set in the service for mongodb server
+user = 'username'           # username as set for the mongodb admin server (the username used in secret.yaml - before base64 conversion)
+password = 'password'       # password as set for the mongodb admin server (the password used in secret.yaml - before base64 conversion)
+host = 'mongodb-service.default.svc.cluster.local'    # service name of the mongodb admin server as set in the service for mongodb server
+port = '27017'              # port number of the mongodb admin server as set in the service for mongodb server
 conn_string = f'mongodb://{user}:{password}@{host}:{port}'
 
-db = MongoClient(conn_string).blog
+db = MongoClient(conn_string)
+print("hello")
+db.list_database_names()
+print("22")
 
 @app.route('/')
 def home():
-    posts = list(db.posts.find({}))
+    return "Heee222"
     return render_template("home.html", homeIsActive=True, createPostIsActive=False, posts=posts)
 
 @app.route('/create-post', methods=["GET", "POST"])
